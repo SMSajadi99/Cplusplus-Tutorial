@@ -7,7 +7,7 @@ int main()
     string input; 
     int single_tile = 4 * 5;
 
-    getline(std::cin, input); // Read the entire line
+    getline(cin, input); // Read the entire line
 
     // Use istringstream to split the line
     istringstream iss(input);
