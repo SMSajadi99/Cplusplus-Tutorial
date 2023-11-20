@@ -6,7 +6,7 @@ int main()
     float Score;
     cin >> Score;
 
-    if (Score > 10)
+    if (Score >= 10)
     {
         cout << "Pass";
     }
