@@ -15,7 +15,7 @@ int main()
     // Extract the first and second numbers from the stringstream
     iss >> angle1 >> angle2 >> angle3;
 
-    if ((angle1 + angle2 + angle3 == 180) && (angle1 == 90 || angle2 == 90 || angle3 == 0))
+    if ((angle1 + angle2 + angle3 == 180) && (angle1 == 90 || angle2 == 90 || angle3 == 0) && (angle1 > 0 || angle2 > 0 || angle3 > 0))
     {
         cout << "Bale";
     }
