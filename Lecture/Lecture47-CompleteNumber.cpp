@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    int sum_num = 0, num;
+    int num, sum_num = 0;
     cin >> num;
 
     for (int i = 1; i < num; i++)
@@ -25,8 +25,5 @@ int main()
     {
         cout << "NO";
     }
-    
-    
-   
     return 0;
 }
