@@ -10,6 +10,7 @@
         "string": "cpp",
         "algorithm": "cpp",
         "iterator": "cpp",
-        "xmemory": "cpp"
+        "xmemory": "cpp",
+        "istream": "cpp"
     }
 }
