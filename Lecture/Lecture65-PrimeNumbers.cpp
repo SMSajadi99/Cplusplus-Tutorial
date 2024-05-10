@@ -19,6 +19,10 @@ int main() {
     cin >> a;
     cin >> b;
 
+    if (a == 1)
+    {
+        a = a + 1;
+    }
     for (int i = a; i <= b; i++) {
         is_prime(i);
     }
