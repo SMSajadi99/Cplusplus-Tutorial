@@ -2,12 +2,11 @@
 #include <string>
 using namespace std;
 
-bool isValidBloodTest(string father, string mother, string child) {
-    // Check if each blood type in child exists in parents' blood types
-    for (char blood : child) {
-        if (blood == '+' || blood == '-') continue; // Ignore Rh factor
-        if (father.find(blood) == string::npos && mother.find(blood) == string::npos) {
-            return false; // Child has a blood type not present in parents
+bool isValidBloodType(string father, string mother, string child) {
+
+    for (char c : child) {
+        if (father.find(c) == string::npos && mother.find(c) == string::npos) {
+            return false;
         }
     }
     return true;
@@ -15,13 +14,15 @@ bool isValidBloodTest(string father, string mother, string child) {
 
 int main() {
     int t;
-    cin >> t;
+    cin >> t; // Number of test cases
 
     while (t--) {
         string father, mother, child;
         cin >> father >> mother >> child;
 
-        if (isValidBloodTest(father, mother, child)) {
+        if (child == "O-" || child == "O+") {
+            cout << "valid" << endl; 
+        } else if (isValidBloodType(father, mother, child)) {
             cout << "valid" << endl;
         } else {
             cout << "invalid" << endl;
