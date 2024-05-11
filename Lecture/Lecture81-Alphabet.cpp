@@ -8,19 +8,14 @@ void Alphabet(int x) {
 }
 
 void PrintAlphabet(int n) {
-    if (n < 1) {
+    if (n < 1 || n > 26) {
         cout << "INVALID" << endl;
         return;
     }
 
     while (n > 0) {
-        if (n > 26) {
-            Alphabet(26); 
-            n -= 26; 
-        } else {
-            Alphabet(n); 
-            n = 0; 
-        }
+        Alphabet(n); 
+        break;
     }
 }
 
