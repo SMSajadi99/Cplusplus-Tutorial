@@ -3,7 +3,7 @@
 using namespace std;
 
 long long countValidSequences(int n) {
-    // Initialize base cases
+
     long long endingWithOne = 1; // number of valid sequences ending with 1
     long long endingWithZero = 1; // number of valid sequences ending with 0
 
