@@ -1,9 +1,11 @@
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
-void printAscendingIntervals(const vector<int>& arr, int k) {
+void printRanges(const vector<int>& arr, int k) {
     int n = arr.size();
+    
     for (int i = 0; i <= n - k; ++i) {
         bool isAscending = true;
         for (int j = i; j < i + k - 1; ++j) {
@@ -12,6 +14,7 @@ void printAscendingIntervals(const vector<int>& arr, int k) {
                 break;
             }
         }
+        
         if (isAscending) {
             cout << i << " to " << i + k - 1 << endl;
         }
@@ -27,7 +30,7 @@ int main() {
         cin >> arr[i];
     }
 
-    printAscendingIntervals(arr, k);
+    printRanges(arr, k);
 
     return 0;
 }
