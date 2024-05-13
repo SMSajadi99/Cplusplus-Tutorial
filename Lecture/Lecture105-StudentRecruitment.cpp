@@ -8,22 +8,26 @@ int main() {
     int n;
     cin >> n;
 
-    vector<int> students(n - 1);
+    vector<int> studentNumbers(n - 1);
     for (int i = 0; i < n - 1; ++i) {
-        cin >> students[i];
+        cin >> studentNumbers[i];
     }
 
-    sort(students.begin(), students.end());
+    sort(studentNumbers.begin(), studentNumbers.end());
 
-    int missing_student = 1;
+    int missingStudent = -1;
     for (int i = 0; i < n - 1; ++i) {
-        if (students[i] != i + 1) {
-            missing_student = i + 1;
+        if (studentNumbers[i] != i + 1) {
+            missingStudent = i + 1;
             break;
         }
     }
 
-    cout << missing_student << endl;
+    if (missingStudent == -1) {
+        missingStudent = n;
+    }
+
+    cout << missingStudent << endl;
 
     return 0;
 }
