@@ -1,3 +1,4 @@
-ali rezaei 23
-mohsen sadeghi 45
-zahra karimi 19
+ali 23
+reza 12
+sadegh 36
+karim 5
