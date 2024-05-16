@@ -8,7 +8,7 @@ int main() {
 
     if (outputFile.is_open()) {
 
-        outputFile << "Hello File!\n";
+        outputFile << "Hello File!";
 
         outputFile.close();
     }
