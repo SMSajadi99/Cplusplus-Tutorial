@@ -1,43 +1,66 @@
 #include <iostream>
 #include <fstream>
-#include <vector>
 #include <string>
-
-using namespace std;
+#include <vector>
 
 int main() {
-    ifstream inputFile(R"(entry_file.txt)");
+    // نام فایل ورودی
+    std::string filename = "D:\\GitHub\\Cplusplus-Tutorial\\Lecture\\entry_file.txt";
 
-    if (!inputFile.is_open()) {
-        cout << "Unable to open file";
+    // باز کردن فایل ورودی
+    std::ifstream infile(filename);
+    if (!infile.is_open()) {
+        std::cerr << "Unable to open file: " << filename << std::endl;
         return 1;
     }
 
-    vector<string> lines;
-    string line;
+    // خواندن اولین خط فایل که بایت مورد نظر را مشخص می‌کند
+    int byteIndex;
+    infile >> byteIndex;
+    infile.ignore(); // نادیده گرفتن کاراکتر newline پس از عدد در خط اول
 
-    while (getline(inputFile, line)) {
+    // خواندن باقی‌مانده فایل خط به خط
+    std::vector<std::string> lines;
+    std::string line;
+    while (std::getline(infile, line)) {
         lines.push_back(line);
     }
+    infile.close();
 
-    inputFile.close();
+    // تبدیل خطوط به یک رشته کامل برای پیدا کردن و تغییر بایت
+    std::string content;
+    for (const auto& l : lines) {
+        content += l + "\n";
+    }
 
-    lines[0].replace(lines[0].find('\n'), 1, "#\n");
-
-    ofstream outputFile(R"(entry_file.txt)");
-
-    if (!outputFile.is_open()) {
-        cout << "Unable to open file";
+    // تغییر بایت مورد نظر به #
+    if (byteIndex > 0 && byteIndex <= content.size()) {
+        content[byteIndex - 1] = '#'; // byteIndex از 1 شروع می‌شود ولی index آرایه از 0
+    } else {
+        std::cerr << "Byte index is out of range." << std::endl;
         return 1;
     }
 
-    for (const auto &line : lines) {
-        outputFile << line << endl;
+    // باز کردن فایل برای نوشتن تغییرات
+    std::ofstream outfile(filename);
+    if (!outfile.is_open()) {
+        std::cerr << "Unable to open file for writing: " << filename << std::endl;
+        return 1;
     }
 
-    outputFile.close();
+    // نوشتن خط اول با بایت مشخص
+    outfile << byteIndex << std::endl;
 
-    cout << "Changes applied successfully.";
+    // نوشتن محتویات تغییر یافته به فایل، با حفظ خطوط جدید
+    size_t pos = 0;
+    for (const auto& l : lines) {
+        size_t next_pos = content.find("\n", pos);
+        if (next_pos != std::string::npos) {
+            outfile << content.substr(pos, next_pos - pos) << std::endl;
+            pos = next_pos + 1;
+        }
+    }
 
+    outfile.close();
     return 0;
 }
